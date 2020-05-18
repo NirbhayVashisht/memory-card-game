@@ -48,4 +48,10 @@ body{
     border-radius: 5px;
     background: #1c7ccc;
     position: absolute;
+    /* So that we don't see the inverted image of the card instead of the card behind */
+    backface-visibility: hidden;
+}
+
+.front-face{
+    transform: rotateY(180deg);
 }
