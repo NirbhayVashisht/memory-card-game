@@ -47,13 +47,20 @@ function unflipCards(){
         lockBoard = false;
         resetBoard();
     }, 1000);
-    
 }
 
 function resetBoard(){
     [hasFlippedCard,lockBoard] =  [false,false];
     [firstCard,secondCard] = [null,null];
 }
+
+(function shuffle(){
+    //a function to shuffle up the cards
+    cards.forEach(card => {
+        let randomPos = Math.floor(Math.random()*12);
+        card.style.order = randomPos;
+    })    
+})();
 //we are looping through the cards and adding an eventlistner
 //that event listner is looking for a click event 
 //whenever a card is clicked flipCard will be called
