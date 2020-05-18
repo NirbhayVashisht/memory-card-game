@@ -2,24 +2,26 @@ const cards = document.querySelectorAll(".memory-card");
 
 
 let hasFlippedCard = false;
+let lockBoard = false;
 let firstCard, secondCard;
 
 function flipCard() {
+    if(lockBoard) return;
+
     this.classList.add('flip');
 
     if (!hasFlippedCard) {
         //first click
         hasFlippedCard = true;
         firstCard = this;
-
-    } else {
+        return;
+    } 
         //second click
         hasFlippedCard = false;
         secondCard = this;
 
         //if cards match
-        checkForMatch();
-    }
+        checkForMatch(); 
 }
 
 function checkForMatch(){
@@ -35,9 +37,12 @@ function disbaleCards(){
 }
 
 function unflipCards(){
+    //incase it's not a match lock it and only unlock it unless it's not a match
+    lockBoard = true;
     setTimeout(() => {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
+        lockBoard = false;
     }, 1000);
 }
 //we are looping through the cards and adding an eventlistner
