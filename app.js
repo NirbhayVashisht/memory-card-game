@@ -28,17 +28,20 @@ function checkForMatch(){
         disbaleCards();    
     } else {
         //if cards don't match
-
-        setTimeout(() => {
-            firstCard.classList.remove('flip');
-            secondCard.classList.remove('flip');
-        }, 1000)
+        unflipCards();
     }
 }
 
 function disbaleCards(){
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
+}
+
+function unflipCards(){
+    setTimeout(() => {
+        firstCard.classList.remove('flip');
+        secondCard.classList.remove('flip');
+    }, 1000);
 }
 //we are looping through the cards and adding an eventlistner
 //that event listner is looking for a click event 
