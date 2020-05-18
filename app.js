@@ -54,14 +54,23 @@ function resetBoard(){
     [firstCard,secondCard] = [null,null];
 }
 
-(function shuffle(){
+function shuffle(){
     //a function to shuffle up the cards
     cards.forEach(card => {
         let randomPos = Math.floor(Math.random()*12);
         card.style.order = randomPos;
     })    
-})();
-//we are looping through the cards and adding an eventlistner
-//that event listner is looking for a click event 
-//whenever a card is clicked flipCard will be called
-cards.forEach(card => card.addEventListener("click", flipCard));
+}
+
+
+function main(){
+    //suffle everytime before running
+    shuffle();
+    //we are looping through the cards and adding an eventlistner
+    //that event listner is looking for a click event 
+    //whenever a card is clicked flipCard will be called
+    cards.forEach(card => card.addEventListener("click", flipCard));
+}
+
+main();
+
