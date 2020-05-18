@@ -21,18 +21,15 @@ function flipCard() {
         checkForMatch();
     }
 }
+
 function checkForMatch(){
-    //if cards match
-    if (firstCard.dataset.card === secondCard.dataset.card) {
-        //remove the actionlistners
-        disbaleCards();    
-    } else {
-        //if cards don't match
-        unflipCards();
-    }
+    let isMatch = firstCard.dataset.card === secondCard.dataset.card 
+    
+    isMatch ? disbaleCards() : unflipCards();
 }
 
 function disbaleCards(){
+    //remove the actionlistners
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
 }
