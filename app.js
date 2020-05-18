@@ -7,6 +7,7 @@ let firstCard, secondCard;
 
 function flipCard() {
     if(lockBoard) return;
+    if(this === firstCard) return; //if firstCard is clicked twice
 
     this.classList.add('flip');
 
@@ -34,6 +35,7 @@ function disbaleCards(){
     //remove the actionlistners
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
+    resetBoard();
 }
 
 function unflipCards(){
@@ -43,7 +45,14 @@ function unflipCards(){
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
         lockBoard = false;
+        resetBoard();
     }, 1000);
+    
+}
+
+function resetBoard(){
+    [hasFlippedCard,lockBoard] =  [false,false];
+    [firstCard,secondCard] = [null,null];
 }
 //we are looping through the cards and adding an eventlistner
 //that event listner is looking for a click event 
